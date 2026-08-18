@@ -1,0 +1,31 @@
+<div class="banner">
+  <nav class="navbar">
+    <div class="logo" routerLink="/">
+      IN THE <span class="highlight">HOOD !</span>
+    </div>
+    
+    <div class="nav-links">
+      <a class="nav-item" routerLink="/">Home</a>
+      @if (authService.currentUserValue) {
+        <a class="nav-item" routerLink="/my-ads">My Ads</a>
+        <button class="nav-item btn-transparent" (click)="onToggleForm()">Post Ad</button>
+        <button class="nav-item btn-transparent" (click)="logout()">Logout</button>
+      } @else {
+        <a class="nav-item" routerLink="/login">Login / Register</a>
+      }
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <h1>What's good IN THE HOOD !</h1>
+    <p class="subtitle">READ & SHARE POSTS IN YOUR OWN NEIGHBORHOOD BASED ON YOUR LOCATION</p>
+
+    <div class="search-bar">
+      <input type="text" placeholder="TYPE ADDRESS OR A PLACE NEARBY IN ANY LANGUAGE..." [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">
+      <button class="btn-primary btn-go" (click)="onSearch()">GO</button>
+      <button class="btn-secondary btn-nearby" (click)="onNearbyMe()">
+        📍 Nearby Me
+      </button>
+    </div>
+  </div>
+</div>

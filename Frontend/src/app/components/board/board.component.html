@@ -1,0 +1,23 @@
+<div class="board-container">
+  <div class="category-filters">
+    <button class="pill" [class.active]="!currentCategory" (click)="setCategory('')">All</button>
+    <button class="pill" [class.active]="currentCategory === 'Buy & Sell'" (click)="setCategory('Buy & Sell')">Buy & Sell</button>
+    <button class="pill" [class.active]="currentCategory === 'Events'" (click)="setCategory('Events')">Events</button>
+    <button class="pill" [class.active]="currentCategory === 'Rent'" (click)="setCategory('Rent')">Rent</button>
+    <button class="pill" [class.active]="currentCategory === 'Travel'" (click)="setCategory('Travel')">Travel</button>
+    <button class="pill" [class.active]="currentCategory === 'Other'" (click)="setCategory('Other')">Other</button>
+    @if (isLocationFiltered) {
+      <button class="pill btn-clear" (click)="clearLocationFilter()">✕ Clear Location</button>
+    }
+  </div>
+
+  <div class="board">
+    @for (ad of ads; track ad.id) {
+      <app-ad-card [ad]="ad" (edit)="openEditForm($event)" (delete)="deleteAd($event)"></app-ad-card>
+    }
+  </div>
+</div>
+
+@if (showForm) {
+  <app-ad-form [adToEdit]="selectedAd" (closeForm)="closeEditForm()"></app-ad-form>
+}

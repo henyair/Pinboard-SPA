@@ -1,0 +1,71 @@
+<div class="modal-overlay" (click)="closeForm.emit()">
+  <div class="ad-form-container" (click)="$event.stopPropagation()">
+    <button class="btn-close" (click)="closeForm.emit()">✕</button>
+    <h2>{{ adToEdit ? 'Edit Ad' : 'Post a New Ad' }}</h2>
+  
+  @if (successMessage) {
+    <div class="alert success">{{ successMessage }}</div>
+  }
+  @if (locationError) {
+    <div class="alert error">{{ locationError }}</div>
+  }
+
+  <form [formGroup]="adForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title *</label>
+      <input id="title" type="text" formControlName="title" placeholder="What are you posting?">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description *</label>
+      <textarea id="description" formControlName="description" rows="4" placeholder="Describe your item or event..."></textarea>
+    </div>
+
+    <div class="form-group row">
+      <div class="col">
+        <label for="category">Category *</label>
+        <select id="category" formControlName="category">
+          <option value="" disabled>Select a category</option>
+          @for (cat of categories; track cat) {
+            <option [value]="cat">{{ cat }}</option>
+          }
+        </select>
+      </div>
+      <div class="col">
+        <label for="price">Price</label>
+        <input id="price" type="number" formControlName="price" placeholder="0.00">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contactInfo">Phone or Email *</label>
+      <input id="contactInfo" type="text" formControlName="contactInfo" placeholder="How should people reach you?">
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">Image URL</label>
+      <input id="imageUrl" type="url" formControlName="imageUrl" placeholder="https://...">
+    </div>
+
+    <div class="form-group location-group">
+      <label for="locationName">Location Name</label>
+      <div class="location-input">
+        <input id="locationName" type="text" formControlName="locationName" placeholder="e.g., Downtown, Park...">
+        <button type="button" class="btn-secondary" (click)="getLocation()" style="white-space: nowrap; padding: 0 16px;">
+          <span class="icon">📍</span> Get My Location
+        </button>
+      </div>
+      @if (latitude && longitude) {
+        <small class="location-success">Location acquired: {{ latitude | number:'1.4-4' }}, {{ longitude | number:'1.4-4' }}</small>
+      }
+    </div>
+
+    <div class="form-actions" style="display: flex; gap: 12px; margin-top: 24px;">
+      <button type="button" class="btn-secondary" style="flex: 1;" (click)="closeForm.emit()">Cancel</button>
+      <button type="submit" class="btn-primary" style="flex: 1;" [disabled]="isSubmitting || adForm.invalid">
+        {{ isSubmitting ? 'Posting...' : 'Post Ad' }}
+      </button>
+    </div>
+  </form>
+  </div>
+</div>

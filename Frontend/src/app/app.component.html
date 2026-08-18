@@ -1,0 +1,5 @@
+<app-header (toggleForm)="showForm = !showForm"></app-header>
+@if (showForm) {
+  <app-ad-form (closeForm)="showForm = false"></app-ad-form>
+}
+<router-outlet></router-outlet>

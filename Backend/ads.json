@@ -1,0 +1,17 @@
+[
+  {
+    "Id": "26b0b4c4-15eb-4a8d-a009-c746d70d23cf",
+    "Title": "\u05DA\u05DC\u05E9\u05DB\u05D7",
+    "Description": "\u05DA\u05D3\u05DC\u05D7\u05DB",
+    "Category": "Events",
+    "LocationName": "\u05D2\u05E0\u05D9 \u05EA\u05E7\u05D5\u05D5\u05D4",
+    "Latitude": 32.061224720673245,
+    "Longitude": 34.873265515640945,
+    "AuthorId": "6e05f4ea-cd29-444f-898a-1bcda961424c",
+    "AuthorName": "hen",
+    "ContactInfo": "hen@sr-wf.org.il",
+    "ImageUrl": "",
+    "Price": 5,
+    "CreatedAt": "2026-08-16T20:07:06.0721258Z"
+  }
+]

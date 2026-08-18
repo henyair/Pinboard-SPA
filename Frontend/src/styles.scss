@@ -1,0 +1,78 @@
+:root {
+  --color-primary: #f37023;
+  --color-slate: #1e293b;
+  --color-gray: #64748b;
+  --color-bg: #f8fafc;
+  --color-card: #ffffff;
+  
+  // Category Accents
+  --cat-buy-sell: #ec4899;
+  --cat-events: #3b82f6;
+  --cat-rent: #10b981;
+  --cat-travel: #06b6d4;
+  --color-other: #a855f7;
+  --cat-other: #a855f7;
+  --cat-default: #94a3b8;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-slate);
+}
+
+// Unified Buttons
+.btn-primary, .btn-secondary, .btn-danger {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  
+  &:hover:not(:disabled) {
+    background-color: #d9621d;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(243, 112, 35, 0.2);
+  }
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-gray);
+  border: 1px solid #cbd5e1;
+  
+  &:hover:not(:disabled) {
+    background-color: #f1f5f9;
+    color: var(--color-slate);
+  }
+}
+
+.btn-danger {
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid #fecaca;
+  
+  &:hover:not(:disabled) {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border-color: #fca5a5;
+  }
+}

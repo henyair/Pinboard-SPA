@@ -1,0 +1,43 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h2>{{ isLoginMode ? 'Welcome Back' : 'Create an Account' }}</h2>
+      <p>{{ isLoginMode ? 'Enter your details to access your account' : 'Join us to start posting ads' }}</p>
+    </div>
+
+    @if (error) {
+      <div class="alert error">{{ error }}</div>
+    }
+
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input id="username" type="text" formControlName="username" placeholder="e.g. cool_user99">
+        @if (authForm.get('username')?.touched && authForm.get('username')?.invalid) {
+          <small class="error-text">Username is required.</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" placeholder="••••••••">
+        @if (authForm.get('password')?.touched && authForm.get('password')?.invalid) {
+          <small class="error-text">Password is required (min 4 chars).</small>
+        }
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="isSubmitting || authForm.invalid" style="width: 100%; padding: 14px; font-size: 1.05rem; margin-top: 10px;">
+        {{ isSubmitting ? 'Please wait...' : (isLoginMode ? 'Sign In' : 'Sign Up') }}
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      <p>
+        {{ isLoginMode ? "Don't have an account?" : "Already have an account?" }}
+        <button class="btn-link" (click)="toggleMode()">
+          {{ isLoginMode ? 'Sign Up' : 'Sign In' }}
+        </button>
+      </p>
+    </div>
+  </div>
+</div>
